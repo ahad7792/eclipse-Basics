@@ -12,13 +12,10 @@ public class SieveOfEratosthenes {
 		boolean[] b = new boolean[n];
 		
 		for(int a = 0; a < n; a++) {
-			if(a == 0) {
-				b[a] = false;
-			}
 			b[a] = true;
 		}
 		
-		for(int i = 2; i < n; i++) {
+		for(int i = 2; i <= n; i++) {
 			
 			if(b[i - 1]) {
 				System.out.println(i);
