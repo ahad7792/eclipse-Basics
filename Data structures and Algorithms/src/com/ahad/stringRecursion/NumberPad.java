@@ -6,6 +6,7 @@ public class NumberPad {
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		scanner.close();
 		System.out.println("digits = ");
 		String numbers = scanner.next();
 		pad("", numbers);
