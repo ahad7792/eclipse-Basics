@@ -2,7 +2,7 @@ package com.ahad.threads;
 
 class ParentThred extends Thread{
 	public static InheritableThreadLocal tL = new InheritableThreadLocal() {
-		public Object childValue(Object p) {
+		public Object childValue(Object p) { // overriding child value method
 			return "CC";
 		}
 	};
