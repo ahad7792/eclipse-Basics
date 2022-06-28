@@ -18,7 +18,7 @@ public class Sort {
         ListNode ansHead = new ListNode();
         ListNode ansTail = ansHead;
         while(list1 != null && list2 != null){
-            if(list1.data < list2.data){
+            if(list1.val < list2.val){
                 ansTail.next = list1;
                 list1 = list1.next;
                 ansTail = ansTail.next;
@@ -46,9 +46,7 @@ public class Sort {
 			slow = slow.next;
 			fast = fast.next.next;
 		}
-		ListNode mid = slow;
-		slow.next = null;
-		return mid;
+		return slow;
 	}
 	
 

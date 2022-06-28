@@ -2,7 +2,7 @@ package com.ahad.intLinkedList;
 
 public class LinkedList {
 	
-	private Node head;
+	private static Node head;
     private Node tail;
     private int size;
 
@@ -127,7 +127,7 @@ public class LinkedList {
         return val;
     }
 
-    public void display() {
+    public void display(Node head) {
         Node temp = head;
         while (temp != null) {
             System.out.print(temp.value + " -> ");
@@ -234,6 +234,35 @@ public class LinkedList {
 		
 	}
 	
+	private void reverseRecursion(Node node) {
+		if(node.next == null) {
+			head = tail;
+			return;
+		}
+		
+		reverseRecursion(node.next);
+		tail.next = node;
+		tail = node;
+		tail.next = null;
+	}
+	
+	public Node threePointersReverseList(Node head) {
+        
+		Node prev = null;
+        Node current = head;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        return head;
+    }
+	
+	
+	
 	public static void main(String[] args) {
 		LinkedList first = new LinkedList();
 		LinkedList second = new LinkedList();
@@ -248,15 +277,23 @@ public class LinkedList {
         second.insertLast(14);
 
         LinkedList ans = LinkedList.merge(first, second);
-        ans.display();
+        ans.display(head);
 
         LinkedList list = new LinkedList();
         for (int i = 7; i > 0; i--) {
             list.insertLast(i);
         }
-        list.display();
+        list.display(head);
         list.bubbleSort();
-        list.display();
+        list.display(head);
+        
+        Node node = list.get(0);
+        list.reverseRecursion(node);
+        list.display(head);
+        
+       
+        
+        list.display(list.threePointersReverseList(node));
 
     }
 }
