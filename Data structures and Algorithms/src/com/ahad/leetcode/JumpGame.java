@@ -12,17 +12,17 @@ public class JumpGame {
 
 	public static boolean canJump(int[] nums) {
 
-//		for (int i = 0, potential = 0; i < nums.length; i++, potential--) {
-//			potential = Math.max(nums[i], potential);
-//			if (potential == 0)
-//				return i == nums.length - 1;
-//		}
-//		return true;
-
-		if (nums.length <= 1) {
-			return true;
+		for (int i = 0, potential = 0; i < nums.length; i++, potential--) {
+			potential = Math.max(nums[i], potential);
+			if (potential == 0)
+				return i == nums.length - 1;
 		}
-		return canJump(nums, nums.length - 2, nums.length - 1);
+		return true;
+
+//		if (nums.length <= 1) {
+//			return true;
+//		}
+//		return canJump(nums, nums.length - 2, nums.length - 1);
 
 //		boolean[] visited = new boolean[nums.length];
 //		for (int i = 0; i < visited.length; i++) {
