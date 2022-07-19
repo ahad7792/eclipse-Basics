@@ -6,7 +6,7 @@ public class JumpGame2 {
 	
 	public static void main(String[] args) {
 		
-		int[] nums = {2,3,0,1,4};
+		int[] nums = {0,2,3,0,1,4};
 		System.out.println(jump(nums));
 		System.out.println(jumpIterative(nums));
 		System.out.println(jumpThreePointer(nums));
