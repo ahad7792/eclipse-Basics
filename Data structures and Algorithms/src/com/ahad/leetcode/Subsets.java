@@ -21,7 +21,7 @@ public class Subsets {
     {
         if(index>nums.length-1)
         {
-            list.add(new ArrayList(temp));//java stores references of list so we have to add like this..
+            list.add(new ArrayList<Integer>(temp));//java stores references of list so we have to add like this..
             return;
         }
         temp.add(nums[index]);
