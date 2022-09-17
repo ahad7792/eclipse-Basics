@@ -11,11 +11,11 @@ public class RotateArray {
 	}
 
 	private void holdAndShift(int[] nums) {
-		int temp = nums[nums.length - 1]; //storing the first element to put it into last after shifting
+		int temp = nums[nums.length - 1]; //storing the last element to put it into first after shifting
 		for (int i = nums.length - 1; i > 0; i--) {
-			nums[i] = nums[i - 1]; //shifting all the others to the left
+			nums[i] = nums[i - 1]; //shifting all the others to the right
 		}
-		nums[0]  = temp; //putting the temp at the last index
+		nums[0]  = temp; //putting the temp at the first index
 	}
 
 }
