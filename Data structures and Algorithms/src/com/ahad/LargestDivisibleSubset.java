@@ -6,46 +6,42 @@ import java.util.List;
 
 public class LargestDivisibleSubset {
 
-    public static List<Integer> largestDivisibleSubset(int[] nums) {
+    static List<Integer> res;
+    static int dp[];
+    
+    public static List<Integer> largestDivisibleSubset2(int[] nums) {
         Arrays.sort(nums);
-        List<Integer> result = new ArrayList<>();
-        List<Integer> currentSubset = new ArrayList<>();
+        List<Integer> ans=new ArrayList<>();
+        res=new ArrayList<>();
 
-        // Start the recursion for each element in the sorted array
-        for (int i = 0; i < nums.length; i++) {
-            List<Integer> subset = findSubset(nums, i);
-            
-            // Update the result if the current subset is larger
-            if (subset.size() > result.size()) {
-                result = subset;
-            }
-        }
-
-        return result;
+        solve2(nums,0,1,ans);
+        return res;
     }
-
-    private static List<Integer> findSubset(int[] nums, int index) {
-        List<Integer> subset = new ArrayList<>();
-        subset.add(nums[index]);
-
-        for (int i = index + 1; i < nums.length; i++) {
-            if (nums[i] % subset.get(subset.size() - 1) == 0) {
-                List<Integer> nextSubset = findSubset(nums, i);
-                if (nextSubset.size() > subset.size()) {
-                    subset = nextSubset;
-                }
+    static void solve2(int nums[], int i, int prev,List<Integer> ans){
+        
+        if(i>=nums.length) {
+            if(ans.size()>res.size()){
+                res.clear();
+                res.addAll(ans);
             }
+            return;
         }
-
-        return subset;
+		 // conisdering into our list ...
+		 
+        if(nums[i]%prev==0 || prev%nums[i]==0){
+            ans.add(nums[i]);
+            solve2(nums,i+1,nums[i],ans);
+            ans.remove(ans.size()-1);
+        }
+		//not considering into list......
+		
+        solve2(nums,i+1,prev,ans);
+        
     }
 
     public static void main(String[] args) {
-        int[] nums1 = {1, 2, 3};
-        System.out.println("Example 1: " + largestDivisibleSubset(nums1));
-
-        int[] nums2 = {1, 2, 4, 8};
-        System.out.println("Example 2: " + largestDivisibleSubset(nums2));
+        int[] nums2 = {3,4,16,8};
+        System.out.println("Input: " + Arrays.toString(nums2));
+        System.out.println("Output: " + largestDivisibleSubset2(nums2));
     }
 }
-
